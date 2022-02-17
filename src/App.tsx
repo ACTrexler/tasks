@@ -13,11 +13,7 @@ function App(): JSX.Element {
                 src="https://cdn.britannica.com/79/191679-050-C7114D2B/Adult-capybara.jpg"
                 alt="A capybara family"
             />
-            <div>
-                <header style={{ fontSize: 32 }}>
-                    Reasons capybaras are cool
-                </header>
-            </div>
+            <p style={{ fontSize: 32 }}>Reasons capybaras are cool</p>
             <ul>
                 <li>Capybaras are the largest rodents on earth</li>
                 <li>Capybaras are super chill</li>
