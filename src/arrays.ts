@@ -76,7 +76,10 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    return colors.every(
+        (color: string): boolean =>
+            color === "red" || color === "green" || color === "blue"
+    );
 }
 
 /**
@@ -87,7 +90,12 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    let sum = 0;
+    sum = addends.reduce(
+        (currentTotal: number, num: number) => currentTotal + num
+    );
+    const out = sum.toString + "=" + addends.join("+");
+    return out;
 }
 
 /**
