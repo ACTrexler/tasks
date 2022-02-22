@@ -5,7 +5,11 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    const out = numbers.filter(
+        (element: number, index: number) =>
+            index === 0 || index === numbers.length - 1
+    );
+    return out;
 }
 
 /**
@@ -13,7 +17,8 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const out = numbers.map((num: number): number => num * 3);
+    return out;
 }
 
 /**
@@ -21,7 +26,10 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const out = numbers.map((str: string): number =>
+        isNaN(parseInt(str, 10)) ? 0 : parseInt(str, 10)
+    );
+    return out;
 }
 
 /**
@@ -32,7 +40,13 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const temp = amounts.map((str: string): string =>
+        str.startsWith("$") ? str.substring(1) : str
+    );
+    const out = temp.map((str: string): number =>
+        isNaN(parseInt(str, 10)) ? 0 : parseInt(str, 10)
+    );
+    return out;
 };
 
 /**
@@ -41,7 +55,11 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const temp = messages.map((str: string): string =>
+        str.endsWith("!") ? str.toUpperCase() : str
+    );
+    const out = temp.filter((str: string): boolean => !str.endsWith("?"));
+    return out;
 };
 
 /**
