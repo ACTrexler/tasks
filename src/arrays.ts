@@ -67,7 +67,8 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const temp = words.filter((value: string) => value.length < 4);
+    return temp.length;
 }
 
 /**
@@ -108,5 +109,17 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    let negIndex = values.length;
+    const negValues = values.filter((value: number): boolean => value < 0);
+    negIndex = values.findIndex(
+        (value: number): boolean => value === negValues[0]
+    );
+    const beforeNeg = values.filter(
+        (value: number, index: number): boolean => index < negIndex
+    );
+    const sum = beforeNeg.reduce(
+        (currentTotal: number, num: number) => currentTotal + num
+    );
+    const out = values.splice(negIndex + 1, 0, sum);
+    return out;
 }
