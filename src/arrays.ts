@@ -5,10 +5,13 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    const out = numbers.filter(
+    let out = numbers.filter(
         (element: number, index: number) =>
             index === 0 || index === numbers.length - 1
     );
+    if (numbers.length === 1) {
+        out = [...out, numbers[0]];
+    }
     return out;
 }
 
@@ -91,11 +94,13 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    let sum = 0;
-    sum = addends.reduce(
+    if (addends.length === 0) {
+        return "0=0";
+    }
+    const sum = addends.reduce(
         (currentTotal: number, num: number) => currentTotal + num
     );
-    const out = sum.toString + "=" + addends.join("+");
+    const out = sum.toString() + "=" + addends.join("+");
     return out;
 }
 
@@ -109,17 +114,30 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
+    if (values.length === 0) {
+        return [0];
+    }
     let negIndex = values.length;
     const negValues = values.filter((value: number): boolean => value < 0);
+    if (negValues.length === 0) {
+        const sum = values.reduce(
+            (currentTotal: number, num: number) => currentTotal + num
+        );
+        return [...values, sum];
+    }
     negIndex = values.findIndex(
         (value: number): boolean => value === negValues[0]
     );
     const beforeNeg = values.filter(
         (value: number, index: number): boolean => index < negIndex
     );
-    const sum = beforeNeg.reduce(
-        (currentTotal: number, num: number) => currentTotal + num
-    );
-    const out = values.splice(negIndex + 1, 0, sum);
+    let sum = 0;
+    if (beforeNeg.length > 0) {
+        sum = beforeNeg.reduce(
+            (currentTotal: number, num: number) => currentTotal + num
+        );
+    }
+    const out = [...values];
+    out.splice(negIndex + 1, 0, sum);
     return out;
 }
