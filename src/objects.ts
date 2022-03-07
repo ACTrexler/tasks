@@ -1,5 +1,3 @@
-import { idText } from "typescript";
-import { isQuestion } from "./functions";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
