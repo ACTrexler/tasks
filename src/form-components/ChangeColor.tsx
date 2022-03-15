@@ -21,7 +21,7 @@ export function ChangeColor(): JSX.Element {
             <h3>Change Color</h3>
             {COLORS.map((value: string) => (
                 <Form.Check
-                    key="color_buttons"
+                    key={value + "_button"}
                     inline
                     type="radio"
                     name="response"
@@ -36,7 +36,13 @@ export function ChangeColor(): JSX.Element {
             ))}
             <div>
                 You have chosen{" "}
-                <span style={{ backgroundColor: color }}>{color}</span>.
+                <span
+                    style={{ backgroundColor: color }}
+                    data-testid="colored-box"
+                >
+                    {color}
+                </span>
+                .
             </div>
         </div>
     );

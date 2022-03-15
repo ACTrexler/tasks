@@ -14,8 +14,8 @@ export function EditMode(): JSX.Element {
         setIsStudent(event.target.checked);
     }
 
-    function toggleEditMode() {
-        setInEditMode(!inEditMode);
+    function changeEditMode(event: React.ChangeEvent<HTMLInputElement>) {
+        setInEditMode(event.target.checked);
     }
 
     return (
@@ -26,11 +26,11 @@ export function EditMode(): JSX.Element {
                 id="is-edit-mode-check"
                 label="Edit Mode"
                 checked={inEditMode}
-                onChange={toggleEditMode}
+                onChange={changeEditMode}
             />
-            {inEditMode && isStudent && <div>{name} is a student</div>}
-            {inEditMode && !isStudent && <div>{name} is not a student</div>}
-            {!inEditMode && (
+            {!inEditMode && isStudent && <div>{name} is a student</div>}
+            {!inEditMode && !isStudent && <div>{name} is not a student</div>}
+            {inEditMode && (
                 <div>
                     <Form.Group controlId="formAddAttempts">
                         <Form.Label>Name:</Form.Label>

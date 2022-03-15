@@ -8,7 +8,7 @@ export function MultipleChoiceQuestion({
     options: string[];
     expectedAnswer: string;
 }): JSX.Element {
-    const [selected, setSelected] = useState<string>(options[1]);
+    const [selected, setSelected] = useState<string>(options[0]);
 
     function updateSelected(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelected(event.target.value);
@@ -27,8 +27,8 @@ export function MultipleChoiceQuestion({
                     ))}
                 </Form.Select>
             </Form.Group>
-            {selected === expectedAnswer && <div>✔️</div>}
-            {selected !== expectedAnswer && <div>❌</div>}
+            {selected === expectedAnswer && <p>✔️</p>}
+            {selected !== expectedAnswer && <p>❌</p>}
         </div>
     );
 }
