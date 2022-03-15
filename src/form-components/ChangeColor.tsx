@@ -27,14 +27,17 @@ export function ChangeColor(): JSX.Element {
                     name="response"
                     onChange={(e) => setColor(e.target.value)}
                     id={"color-" + value}
-                    label={<div>{value}</div>}
+                    label={
+                        <div style={{ backgroundColor: value }}>{value}</div>
+                    }
                     value={value}
                     checked={color === value}
                 />
             ))}
-            <div>You have chosen</div>
-            <div background-color={color}>{color}</div>
-            <div>.</div>
+            <div>
+                You have chosen{" "}
+                <span style={{ backgroundColor: color }}>{color}</span>.
+            </div>
         </div>
     );
 }
