@@ -22,6 +22,7 @@ function ShowHideTasks(): JSX.Element {
     const [visible, setVisible] = useState<boolean>(false);
     return (
         <div>
+            <Button onClick={() => setVisible(!visible)}>Show/Hide</Button>
             {visible && (
                 <div>
                     <DoubleHalf></DoubleHalf>
@@ -59,7 +60,6 @@ function ShowHideTasks(): JSX.Element {
                     <CycleHoliday></CycleHoliday>
                 </div>
             )}
-            <Button onClick={() => setVisible(!visible)}>Show/Hide</Button>
         </div>
     );
 }
@@ -72,6 +72,8 @@ function App(): JSX.Element {
             </header>
             <Quizzer></Quizzer>
             <hr></hr>
+            <h3>Quizzer Sketch</h3>
+            <img src="QuizzerSketch.png" alt="Quizzer Sketch"></img>
             <ShowHideTasks></ShowHideTasks>
         </div>
     );
