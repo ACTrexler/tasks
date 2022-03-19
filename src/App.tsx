@@ -75,6 +75,9 @@ function App(): JSX.Element {
             <hr></hr>
             <h4>Quizzer Sketch</h4>
             <img src={QuizzerSketch} alt="Quizzer Sketch"></img>
+            <hr></hr>
+            <h4>Completed Requirements</h4>
+            <ul></ul>
             <ShowHideTasks></ShowHideTasks>
         </div>
     );
