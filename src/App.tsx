@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { ChangeType } from "./components/ChangeType";
 import { RevealAnswer } from "./components/RevealAnswer";
@@ -15,6 +15,55 @@ import { GiveAttempts } from "./form-components/GiveAttempts";
 import { EditMode } from "./form-components/EditMode";
 import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion";
 import { ChangeColor } from "./form-components/ChangeColor";
+import { Quizzer } from "./quizzer/Quizzer";
+import { Button } from "react-bootstrap";
+import QuizzerSketch from "./QuizzerSketch.png";
+
+function ShowHideTasks(): JSX.Element {
+    const [visible, setVisible] = useState<boolean>(false);
+    return (
+        <div>
+            <Button onClick={() => setVisible(!visible)}>Show/Hide</Button>
+            {visible && (
+                <div>
+                    <DoubleHalf></DoubleHalf>
+                    <CheckAnswer expectedAnswer="42"></CheckAnswer>
+                    <hr></hr>
+                    <GiveAttempts></GiveAttempts>
+                    <hr></hr>
+                    <EditMode></EditMode>
+                    <hr></hr>
+                    <ChangeColor></ChangeColor>
+                    <hr></hr>
+                    <MultipleChoiceQuestion
+                        options={["a", "b", "c"]}
+                        expectedAnswer="b"
+                    ></MultipleChoiceQuestion>
+                    <hr></hr>
+                    <DoubleHalf></DoubleHalf>
+                    <hr></hr>
+                    <ChooseTeam></ChooseTeam>
+                    <hr></hr>
+                    <ColoredBox></ColoredBox>
+                    <hr></hr>
+                    <ShoveBox></ShoveBox>
+                    <hr></hr>
+                    <Counter></Counter>
+                    <hr />
+                    <RevealAnswer></RevealAnswer>
+                    <hr />
+                    <StartAttempt></StartAttempt>
+                    <hr />
+                    <TwoDice></TwoDice>
+                    <hr />
+                    <ChangeType></ChangeType>
+                    <hr />
+                    <CycleHoliday></CycleHoliday>
+                </div>
+            )}
+        </div>
+    );
+}
 
 function App(): JSX.Element {
     return (
@@ -22,40 +71,14 @@ function App(): JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript
             </header>
+            <Quizzer></Quizzer>
             <hr></hr>
-            <DoubleHalf></DoubleHalf>
-            <CheckAnswer expectedAnswer="42"></CheckAnswer>
+            <h4>Quizzer Sketch</h4>
+            <img src={QuizzerSketch} alt="Quizzer Sketch"></img>
             <hr></hr>
-            <GiveAttempts></GiveAttempts>
-            <hr></hr>
-            <EditMode></EditMode>
-            <hr></hr>
-            <ChangeColor></ChangeColor>
-            <hr></hr>
-            <MultipleChoiceQuestion
-                options={["a", "b", "c"]}
-                expectedAnswer="b"
-            ></MultipleChoiceQuestion>
-            <hr></hr>
-            <DoubleHalf></DoubleHalf>
-            <hr></hr>
-            <ChooseTeam></ChooseTeam>
-            <hr></hr>
-            <ColoredBox></ColoredBox>
-            <hr></hr>
-            <ShoveBox></ShoveBox>
-            <hr></hr>
-            <Counter></Counter>
-            <hr />
-            <RevealAnswer></RevealAnswer>
-            <hr />
-            <StartAttempt></StartAttempt>
-            <hr />
-            <TwoDice></TwoDice>
-            <hr />
-            <ChangeType></ChangeType>
-            <hr />
-            <CycleHoliday></CycleHoliday>
+            <h4>Completed Requirements</h4>
+            <ul></ul>
+            <ShowHideTasks></ShowHideTasks>
         </div>
     );
 }
